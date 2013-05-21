@@ -4,9 +4,15 @@ get '/' do
 end
 
 post '/sign_in' do
-   @game = create_players(params)
-     session[:id] = @game.id
-  {redirect: "/play/#{@game.id}"}.to_json
+  @game = Game.create
+  @player1 = User.find_or_create_by_name(name: params[:player1])
+  @player2 = User.find_or_create_by_name(name: params[:player2])
+  @game.users << @player1
+  @game.users << @player2
+  @board_length = params[:board_length]
+  session[:id] = @game.id
+  # {redirect: "/play/#{@game.id}"}.to_json
+  {game: @game, player1: @game.users[0], player2: @game.users[1], board_length: @board_length}.to_json
 end
 
 get '/play/:id' do

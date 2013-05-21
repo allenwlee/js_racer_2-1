@@ -1,20 +1,20 @@
-$(window).load(function(){
-  console.log("chicken")
-  getData;
-});
+// $(window).load(function(){
+//   console.log("chicken")
+//   getData;
+// });
 
 
 
 
 
-var getData = (function()
-{
-  $.ajax({
-    type: 'get',
-    url: window.location.href +"results",
-    dataType: 'json',
-  }).done(function(data){console.log(data)})
-});
+// var getData = (function()
+// {
+//   $.ajax({
+//     type: 'get',
+//     url: window.location.href +"results",
+//     dataType: 'json',
+//   }).done(function(data){console.log(data)})
+// });
 
 
 

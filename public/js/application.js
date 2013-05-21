@@ -1,4 +1,46 @@
-// $(document).ready(function() {
+$(document).ready(function() {
+  $('form').on('submit', function(e){
+    e.preventDefault();
+    $.ajax({
+      type: 'post',
+      url: '/sign_in',
+      data: $(this).serialize()
+    }).done( function(data){
+      alert("hey");
+      console.log(data);
+    })
+  });
+});
+
+
+var Game = function(player1, player2, board_length) {
+  this.player1 = player1,
+  this.player2 = player2,
+  this.boardLength = board_length
+}
+
+Game.prototype = {
+  render: function(board_length) {
+    for ( i = 1; i <= board_length; i++){
+      $('#player1_strip').append($('<td></td>'));
+      $('#player2_strip').append($('<td></td>'))
+    };
+
+
+  }
+
+  var Player = function(id, name) {
+    this.id = id,
+    this.name = name
+  }
+
+
+
+
+
+
+// script var gameID = @game close script
+
 //   getData();
 //   $(document).keydown(function(e){
 //     if (active1 === boardSize || active2 === boardSize){
@@ -17,6 +59,17 @@
 //  });
 // });
 
+// var Game = function(player1, player2, boardSize) {
+//   this.player1 = player1
+//   this.player2 = player2
+//   this.boardSize = boardSize
+// }
+
+// Game.prototype = {
+//   render: function() {
+
+//   }
+// }
 
 // var player1 = '#player1_strip td'
 // var player2 = '#player2_strip td'
@@ -31,6 +84,10 @@
 //   }
 //   return 2;
 // });
+
+
+
+
 
 // var advancePlayer = (function(player, active)
 // {
@@ -55,3 +112,5 @@
 //     dataType: 'json',
 //   }).done(function(data){console.log(data)})
 // });
+
+// var getGameData = (function()
