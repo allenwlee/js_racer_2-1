@@ -6,12 +6,12 @@ end
 post '/sign_in' do
    @game = create_players(params)
      session[:id] = @game.id
-   redirect "/play/#{@game.id}"
+  {redirect: "/play/#{@game.id}"}.to_json
 end
 
 get '/play/:id' do
  @game = Game.find(params[:id])
- @time = Time.now
+ p @game.users
  erb :play
 end
 

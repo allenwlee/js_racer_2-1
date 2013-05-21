@@ -11,7 +11,9 @@ var submitButton = (function(){
       url:'/sign_in',
       data: $('#sign_in').serialize(),
       dataType: 'json'
-    })
+    }).done(function(data){
+      window.location.href = data.redirect;
+    });
   });
 });
 
@@ -28,4 +30,5 @@ var playerForm = function(){
   $('#sign_in:last').append($("<input type='text' name='player "+ playerCount +"' placeholder='Player" + playerCount+"'>"));
   playerCount ++;
 }
+
 
