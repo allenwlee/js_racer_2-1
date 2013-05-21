@@ -11,14 +11,18 @@ th {
 
 .racer_table td {
   background-color: white;
-  height: 35px;
+  height: 20px;
   width: 100px;
 }
 
 #player1_strip td.active {
-  background-color: black;
+  background-image: url('yellow.jpg');
+  background-size: cover;
+    background-repeat: no-repeat;
 }
 
 #player2_strip td.active {
-  background-color: red;
+  background-image: url('white.jpg');
+  background-size: cover;
+    background-repeat: no-repeat;
 }

@@ -7,7 +7,7 @@ $(document).ready(function() {
         type: 'post',
         url: window.location.href +"/results",
         data: {winner:(winner)}
-      });
+      }).done(function(data){console.log(data)});
     } else {
       if (e.keyCode == 81) {
         active1 ++
@@ -20,6 +20,7 @@ $(document).ready(function() {
     };
     
   });
+
 });
 
 
@@ -28,6 +29,7 @@ var player2 = '#player2_strip td'
 var active1 = 1
 var active2 = 1
 var boardSize = 5
+// var stuff = data.stuff
 // q = 81
 // p = 80
 

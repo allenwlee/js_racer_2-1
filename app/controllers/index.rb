@@ -14,7 +14,8 @@ end
 
 get '/play/:id' do
  @game = Game.find(params[:id])
- playerhash = {game: @game.id}.to_json
+ @time = Time.now
+ playerhash = {game: @game.id, start: @time, stuff: 'stuff'}.to_json
  erb :play
 end
 
@@ -32,4 +33,6 @@ post '/play/:id/results' do
   end
   @game.update_attributes(winner: winning_player)
   "yay!"
+  content_type :json
+  hash = {stuff: "hey"}.to_json
 end
