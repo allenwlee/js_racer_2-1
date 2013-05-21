@@ -15,15 +15,12 @@ end
 get '/play/:id' do
  @game = Game.find(params[:id])
  @time = Time.now
- playerhash = {game: @game.id, start: @time, stuff: 'stuff'}.to_json
  erb :play
 end
 
 post '/play/:id/results' do
   puts "here"
   puts params
-  @game = Game.find(params[:id])
-  
   def winning_player
     if params[:winner] == "1"
       @player1 = @game.users[0]
@@ -31,8 +28,16 @@ post '/play/:id/results' do
       @player2 = @game.users[1]
     end
   end
+
+  @game = Game.find(params[:id])
+
+
   @game.update_attributes(winner: winning_player)
   "yay!"
   content_type :json
-  hash = {stuff: "hey"}.to_json
+
+end
+
+get '/play/:id/results' do
+  playerhash = {game: 99, start: 'now', stuff: 'stuff'}.to_json
 end
