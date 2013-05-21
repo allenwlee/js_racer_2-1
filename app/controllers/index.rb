@@ -1,14 +1,19 @@
+
 get '/' do
   # Look in app/views/index.erb
   erb :index
 end
 
 post '/sign_in' do
-  @player1 = User.find_or_create_by_name(params[:player1])
-  @player2 = User.find_or_create_by_name(params[:player2])
-  @game = Game.create
-  @game.users << @player1
-  @game.users << @player2
+   @game = create_players(params)
+   puts "here!!!!!!!!!!!"
+   p @game
+  # @player1 = User.find_or_create_by_name(params[:player1])
+  # @player2 = User.find_or_create_by_name(params[:player2])
+  # new_game("one")
+  # @game = Game.create
+  # @game.users << @player1
+  # @game.users << @player2
   redirect "/play/#{@game.id}"
 end
 
