@@ -42,7 +42,7 @@ var gameOver = (function(winner)
 {
   $.ajax({
     type: 'post',
-    url: window.location.href +"/results",
+    url: window.location.href +"results",
     data: {winner:(winner)}
   })
 });
@@ -51,7 +51,7 @@ var getData = (function()
 {
   $.ajax({
     type: 'get',
-    url: window.location.href +"/results",
+    url: window.location.href +"results",
     dataType: 'json',
   }).done(function(data){console.log(data)})
 });
