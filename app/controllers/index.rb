@@ -36,5 +36,5 @@ post '/play/:id/results' do
 end
 
 get '/play/:id/results' do
-  playerhash = {game: 99, start: 'now', stuff: 'stuff'}.to_json
+  playerhash = {game: [99,10,19], start: 'now', stuff: 'stuff'}.to_json
 end

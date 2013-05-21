@@ -17,6 +17,7 @@ var submitButton = (function(){
   });
 });
 
+
 var addPlayers = (function(){
   $('#add_players').on('submit', function(e){
     e.preventDefault();
@@ -31,4 +32,16 @@ var playerForm = function(){
   playerCount ++;
 }
 
+var startGame = (function(data){
+  window.location.href = data.redirect;
+  getData();
+})
 
+var getData = (function()
+{
+  $.ajax({
+    type: 'get',
+    url: window.location.href +"results",
+    dataType: 'json',
+  }).done(function(data){console.log(data)})
+});
