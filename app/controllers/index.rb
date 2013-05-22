@@ -12,6 +12,7 @@ post '/sign_in' do
   @board_length = params[:board_length]
   session[:id] = @game.id
   # {redirect: "/play/#{@game.id}"}.to_json
+  content_type :json
   {game: @game, player1: @game.users[0], player2: @game.users[1], board_length: @board_length}.to_json
 end
 
@@ -21,7 +22,7 @@ get '/play/:id' do
  erb :play
 end
 
-post '/play/:id/results' do
+post '/results' do
   puts "here"
   puts params
   def winning_player
@@ -31,14 +32,9 @@ post '/play/:id/results' do
       @player2 = @game.users[1]
     end
   end
-
-  @game = Game.find(params[:id])
-
-
+  @game = Game.find(session[:id])
   @game.update_attributes(winner: winning_player)
-  "yay!"
-  content_type :json
-
+  
 end
 
 get '/play/:id/results' do
